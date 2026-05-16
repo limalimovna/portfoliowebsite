@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STUDIO — Цифровые продукты для бизнеса</title>
+
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons: Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #ffffff;
+      --bg-soft:   #f5f5f7;
+      --bg-card:   #ffffff;
+      --text-1:    #1d1d1f;
+      --text-2:    #6e6e73;
+      --text-3:    #aeaeb2;
+      --accent:    #0a66c2;
+      --accent-2:  #e8f0fb;
+      --border:    #e5e5ea;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+      --shadow-md: 0 4px 24px rgba(0,0,0,.08), 0 8px 32px rgba(0,0,0,.04);
+      --radius:    16px;
+      --radius-sm: 10px;
+      --max:       1160px;
+      --font:      'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: #faf9ff;
+      color: var(--text-1);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Mesh gradient – fixed, sits behind every section ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 72% 55% at 12%  2%,  rgba(195,168,255,.38) 0%, transparent 68%),
+        radial-gradient(ellipse 58% 48% at 88%  8%,  rgba(148,195,255,.30) 0%, transparent 65%),
+        radial-gradient(ellipse 65% 52% at 55% 98%,  rgba(188,240,148,.32) 0%, transparent 68%),
+        radial-gradient(ellipse 50% 42% at 92% 58%,  rgba(210,185,255,.20) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 48% at  4% 68%,  rgba(165,215,255,.22) 0%, transparent 62%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    /* ─── Layout helpers ─── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 64px 0; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    h2.section-title {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      color: var(--text-1);
+      margin-bottom: 10px;
+      position: relative;
+      padding-bottom: 18px;
+    }
+    h2.section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 36px; height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #7c3aed, #0a66c2);
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      max-width: 540px;
+      line-height: 1.65;
+    }
+
+    .section-head { margin-bottom: 40px; }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--text-1);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #3a3a3c; transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-1);
+      border: 1.5px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--text-2); background: var(--bg-soft); }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-accent:hover { background: #0855a8; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,102,194,.3); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(229,229,234,.7);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--text-1);
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--text-1); }
+
+    .nav-cta {
+      padding: 9px 20px;
+      font-size: 14px;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 72px 0 56px;
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(124,58,237,.10);
+      border: 1px solid rgba(124,58,237,.18);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #7c3aed;
+      margin-bottom: 20px;
+      letter-spacing: .03em;
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      color: var(--text-1);
+      margin-bottom: 18px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #7c3aed 0%, #0a66c2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 460px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.70);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.85);
+      box-shadow: 0 2px 12px rgba(100,80,200,.08);
+    }
+
+    .hero-card:first-child { grid-column: 1 / -1; }
+
+    .hero-card-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-val {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--text-1);
+    }
+
+    .hero-card-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 4px;
+    }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: rgba(245,242,255,.60);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(210,200,240,.50);
+      border-bottom: 1px solid rgba(210,200,240,.50);
+      padding: 32px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+
+    .stats-grid > div {
+      padding: 0 24px;
+      position: relative;
+    }
+    .stats-grid > div + div::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10%; bottom: 10%;
+      width: 1px;
+      background: rgba(200,190,230,.5);
+    }
+
+    .stat-num {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      background: linear-gradient(135deg, #7c3aed, #0a66c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 3px;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: transparent; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,.80);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      transition: box-shadow .25s, transform .25s, border-color .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #7c3aed, #0a66c2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+      border-color: rgba(124,58,237,.15);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, rgba(124,58,237,.12), rgba(10,102,194,.10));
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .service-icon svg { width: 20px; height: 20px; }
+
+    .service-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-1);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+
+    /* ─── PORTFOLIO ─── */
+    #portfolio {
+      background: rgba(238,235,255,.50);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .portfolio-card {
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.9);
+      transition: box-shadow .25s, transform .25s;
+    }
+
+    .portfolio-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .portfolio-thumb {
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #e9e9eb 0%, #d1d1d6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text-3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-thumb::after {
+      content: 'Открыть ↗';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: #fff;
+      background: rgba(15,10,40,.45);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .portfolio-card:hover .portfolio-thumb::after { opacity: 1; }
+
+    /* Each project gets its own subtle colour */
+    .portfolio-card:nth-child(1) .portfolio-thumb { background: linear-gradient(135deg,#dbeafe,#bfdbfe); }
+    .portfolio-card:nth-child(2) .portfolio-thumb { background: linear-gradient(135deg,#dcfce7,#bbf7d0); }
+    .portfolio-card:nth-child(3) .portfolio-thumb { background: linear-gradient(135deg,#fef3c7,#fde68a); }
+    .portfolio-card:nth-child(4) .portfolio-thumb { background: linear-gradient(135deg,#fce7f3,#fbcfe8); }
+    .portfolio-card:nth-child(5) .portfolio-thumb { background: linear-gradient(135deg,#ede9fe,#ddd6fe); }
+    .portfolio-card:nth-child(6) .portfolio-thumb { background: linear-gradient(135deg,#e0f2fe,#bae6fd); }
+
+    .portfolio-thumb-icon {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,.7);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-2);
+    }
+
+    .portfolio-thumb-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-2);
+    }
+
+    .portfolio-body {
+      padding: 20px 20px 24px;
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-2);
+      padding: 3px 8px;
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 6px;
+    }
+
+    .portfolio-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap .15s;
+    }
+    .portfolio-link:hover { gap: 8px; }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: transparent; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 8px; right: 20px;
+      font-size: 80px;
+      font-family: Georgia, serif;
+      line-height: 1;
+      color: rgba(124,58,237,.10);
+      pointer-events: none;
+    }
+
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 2px;
+      color: #f59e0b;
+      font-size: 15px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-1);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-2);
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-top: 2px;
+    }
+
+    /* ─── CTA SECTION ─── */
+    #contact {
+      background: var(--text-1);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(124,58,237,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-inner .section-label { color: rgba(255,255,255,.5); }
+
+    .cta-title {
+      font-size: clamp(32px, 4.5vw, 50px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-tg {
+      background: #229ED9;
+      color: #fff;
+      gap: 8px;
+    }
+    .btn-tg:hover {
+      background: #1a8cbe;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(34,158,217,.35);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: rgba(245,242,255,.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 2px solid transparent;
+      border-image: linear-gradient(90deg, #7c3aed44, #0a66c244, transparent) 1;
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .footer-logo span { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-2);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--text-1); }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 2fr); }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 48px 0; }
+      .nav-links { display: none; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <!-- ЗАМЕНИ «STUDIO» на название своей команды -->
+      <a href="#" class="nav-logo">STUDIO<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#portfolio">Работы</a></li>
+        <li><a href="#testimonials">Отзывы</a></li>
+      </ul>
+
+      <!-- ЗАМЕНИ @your_username на свой Telegram -->
+      <a href="https://t.me/martaaeduardovnaa" target="_blank" class="btn btn-primary nav-cta">
+        Написать нам
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i data-lucide="zap" style="width:14px;height:14px;"></i>
+            Веб-разработка · AI · Telegram
+          </div>
+
+          <h1 class="hero-title">
+            Цифровые продукты,<br>которые <em>работают</em><br>на ваш бизнес
+          </h1>
+
+          <p class="hero-sub">
+            Разрабатываем сайты, Telegram-боты, AI-инструменты и интернет-магазины —
+            от идеи до запуска, под ключ.
+          </p>
+
+          <div class="hero-actions">
+            <!-- ЗАМЕНИ @your_username на свой Telegram -->
+            <a href="https://t.me/martaaeduardovnaa" target="_blank" class="btn btn-primary">
+              <i data-lucide="send" style="width:16px;height:16px;"></i>
+              Обсудить проект
+            </a>
+            <a href="#portfolio" class="btn btn-ghost">
+              Смотреть работы
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card-label">Завершённых проектов</div>
+            <div class="hero-card-val">50+</div>
+            <div class="hero-card-desc">Сайты, боты, магазины, AI-инструменты</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">Клиентов</div>
+            <div class="hero-card-val">30+</div>
+            <div class="hero-card-desc">Рекомендуют нас</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">Среднее время запуска</div>
+            <div class="hero-card-val">14 дней</div>
+            <div class="hero-card-desc">От брифа до готового продукта</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════ STATS ══════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-num">50+</div>
+          <div class="stat-desc">Проектов запущено</div>
+        </div>
+        <div>
+          <div class="stat-num">30+</div>
+          <div class="stat-desc">Довольных клиентов</div>
+        </div>
+        <div>
+          <div class="stat-num">10</div>
+          <div class="stat-desc">Направлений разработки</div>
+        </div>
+        <div>
+          <div class="stat-num">14 д.</div>
+          <div class="stat-desc">Среднее время запуска</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════ SERVICES ══════════════════════════════ -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Что мы делаем</span>
+        <h2 class="section-title">Полный спектр цифровых услуг</h2>
+        <p class="section-sub">
+          От лендинга до сложной AI-интеграции — решаем задачи бизнеса любого масштаба.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="monitor"></i></div>
+          <div class="service-name">Веб-разработка + UI/UX</div>
+          <div class="service-desc">Современные сайты и веб-приложения с продуманным дизайном</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="send"></i></div>
+          <div class="service-name">Telegram Mini Apps и боты</div>
+          <div class="service-desc">Приложения и автоматические боты внутри Telegram</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="message-square"></i></div>
+          <div class="service-name">MAX Messenger для бизнеса</div>
+          <div class="service-desc">Разработка решений под российский мессенджер MAX</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="cpu"></i></div>
+          <div class="service-name">AI-помощники и автоматизация</div>
+          <div class="service-desc">Умные ассистенты, которые берут рутину на себя</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="link-2"></i></div>
+          <div class="service-name">Интеграция AI с сервисами</div>
+          <div class="service-desc">Подключение AI к календарю, почте, CRM и другим системам</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="shopping-bag"></i></div>
+          <div class="service-name">Интернет-магазины с оплатой</div>
+          <div class="service-desc">ЮKassa, PayKeeper и другие платёжные решения под ключ</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="map"></i></div>
+          <div class="service-name">ГИС и геосервисы</div>
+          <div class="service-desc">Геоинформационные системы и картографические инструменты</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="bar-chart-2"></i></div>
+          <div class="service-name">AI для смет и подбора цен</div>
+          <div class="service-desc">Автоматический расчёт смет и интеллектуальный подбор товаров</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="plug"></i></div>
+          <div class="service-name">Интеграции со сторонними API</div>
+          <div class="service-desc">Подключение к любым внешним сервисам и платформам</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i data-lucide="refresh-cw"></i></div>
+          <div class="service-name">Автоматизация бизнес-процессов</div>
+          <div class="service-desc">Убираем ручной труд и ускоряем работу вашей команды</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════ PORTFOLIO ══════════════════════════════ -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Наши работы</span>
+        <h2 class="section-title">Проекты, которыми мы гордимся</h2>
+        <p class="section-sub">
+          Реальные продукты для реальных бизнесов — от небольших лендингов до AI-платформ.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <!--
+          КАК ЗАМЕНИТЬ КАРТОЧКИ:
+          1. Замените href="..." на URL реального сайта
+          2. Вместо цветного placeholder можно поставить:
+             <img src="screenshot.jpg" alt="Название" style="width:100%;height:100%;object-fit:cover;">
+             ...внутри .portfolio-thumb
+          3. Обновите тег, название и описание
+        -->
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb">
+            <div class="portfolio-thumb-icon"><i data-lucide="globe" style="width:22px;height:22px;"></i></div>
+            <span class="portfolio-thumb-label">Скриншот проекта</span>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Сайт + UI/UX</span>
+            <div class="portfolio-name">Название проекта 1</div>
+            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
+            <a href="#" target="_blank" class="portfolio-link">
+              Смотреть сайт <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb">
+            <img src="lr-preview.jpg" alt="Lingerie Revolution" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Telegram Bot</span>
+            <div class="portfolio-name">Lingerie Revolution</div>
+            <div class="portfolio-desc">Telegram-бот для бренда нижнего белья — каталог товаров, приём заказов и прямая связь с менеджером без лишних шагов.</div>
+            <a href="https://t.me/lingerie_revolution_bot" target="_blank" class="portfolio-link">
+              Открыть бота <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb">
+            <div class="portfolio-thumb-icon"><i data-lucide="shopping-bag" style="width:22px;height:22px;"></i></div>
+            <span class="portfolio-thumb-label">Скриншот проекта</span>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Интернет-магазин</span>
+            <div class="portfolio-name">Название проекта 3</div>
+            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
+            <a href="#" target="_blank" class="portfolio-link">
+              Смотреть сайт <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb">
+            <div class="portfolio-thumb-icon"><i data-lucide="cpu" style="width:22px;height:22px;"></i></div>
+            <span class="portfolio-thumb-label">Скриншот проекта</span>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">AI-автоматизация</span>
+            <div class="portfolio-name">Название проекта 4</div>
+            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
+            <a href="#" target="_blank" class="portfolio-link">
+              Подробнее <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb">
+            <div class="portfolio-thumb-icon"><i data-lucide="map" style="width:22px;height:22px;"></i></div>
+            <span class="portfolio-thumb-label">Скриншот проекта</span>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">ГИС-система</span>
+            <div class="portfolio-name">Название проекта 5</div>
+            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
+            <a href="#" target="_blank" class="portfolio-link">
+              Смотреть <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb">
+            <div class="portfolio-thumb-icon"><i data-lucide="link-2" style="width:22px;height:22px;"></i></div>
+            <span class="portfolio-thumb-label">Скриншот проекта</span>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Интеграция API</span>
+            <div class="portfolio-name">Название проекта 6</div>
+            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
+            <a href="#" target="_blank" class="portfolio-link">
+              Подробнее <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════ TESTIMONIALS ══════════════════════════════ -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Отзывы клиентов</span>
+        <h2 class="section-title">Что говорят о нашей работе</h2>
+        <p class="section-sub">
+          Предприниматели из разных ниш доверяют нам свои цифровые продукты.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <!--
+          ЗАМЕНИТЕ содержимое отзывов на реальные.
+          Аватар-инициалы обновятся автоматически.
+        -->
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            «Команда сделала нам Telegram-бота для обработки заявок — это сократило время ответа клиентам
+            с 2 часов до 5 минут. Всё сделано чисто, без лишних вопросов, в срок.»
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">ИВ</div>
+            <div>
+              <div class="testimonial-name">Иван В.</div>
+              <div class="testimonial-role">Владелец строительной компании</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            «Запустили интернет-магазин под ключ с оплатой через ЮKassa за 10 дней.
+            Дизайн, мобильная версия, корзина — всё работает. Уже окупилось за первый месяц.»
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">АС</div>
+            <div>
+              <div class="testimonial-name">Анна С.</div>
+              <div class="testimonial-role">Основательница косметического бренда</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            «Подключили AI-помощника к нашей CRM. Теперь менеджеры не тратят время на сортировку
+            входящих — всё распределяется само. Крутой результат за разумные деньги.»
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">МП</div>
+            <div>
+              <div class="testimonial-name">Михаил П.</div>
+              <div class="testimonial-role">Директор по продажам, IT-компания</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════ CTA ══════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="section-label">Работать вместе</span>
+        <h2 class="cta-title">Есть проект? Давайте обсудим</h2>
+        <p class="cta-sub">
+          Расскажите задачу — за 24 часа ответим с предложением и примерной стоимостью.
+          Первая консультация бесплатно.
+        </p>
+        <div class="cta-actions">
+          <!-- ЗАМЕНИ @your_username на свой Telegram -->
+          <a href="https://t.me/martaaeduardovnaa" target="_blank" class="btn btn-tg">
+            <!-- Telegram SVG icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+            </svg>
+            Написать в Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">STUDIO<span>.</span></div>
+        <ul class="footer-links">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#portfolio">Работы</a></li>
+          <li><a href="#testimonials">Отзывы</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+        <div class="footer-copy">© 2025 Studio. Все права защищены.</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // Activate Lucide icons
+    lucide.createIcons();
+
+    // Smooth scroll for anchor links with offset for sticky nav
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 72;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    // Subtle fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll(
+      '.service-card, .portfolio-card, .testimonial-card, .hero-card'
+    ).forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .45s ease, transform .45s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
