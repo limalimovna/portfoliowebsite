@@ -753,6 +753,9 @@
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 2fr); }
+      .stats-grid > div:nth-child(3)::before { display: none; }
+      .stats-grid > div:nth-child(3),
+      .stats-grid > div:nth-child(4) { border-top: 1px solid rgba(200,190,230,.5); padding-top: 20px; margin-top: 4px; }
     }
 
     @media (max-width: 600px) {
@@ -762,6 +765,9 @@
       .testimonials-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .services-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid > div:nth-child(3)::before { display: none; }
+      .stats-grid > div:nth-child(3),
+      .stats-grid > div:nth-child(4) { border-top: 1px solid rgba(200,190,230,.5); padding-top: 20px; margin-top: 4px; }
     }
   </style>
 </head>
