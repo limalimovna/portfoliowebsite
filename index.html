@@ -94,7 +94,7 @@
     }
 
     h2.section-title {
-      font-size: clamp(26px, 4vw, 40px);
+      font-size: clamp(20px, 3vw, 30px);
       font-weight: 700;
       letter-spacing: -.02em;
       line-height: 1.2;
@@ -115,8 +115,9 @@
     .section-sub {
       font-size: 16px;
       color: var(--text-2);
-      max-width: 540px;
+      max-width: 520px;
       line-height: 1.65;
+      text-wrap: balance;
     }
 
     .section-head { margin-bottom: 40px; }
@@ -237,7 +238,7 @@
     }
 
     .hero-title {
-      font-size: clamp(34px, 5vw, 56px);
+      font-size: clamp(24px, 3.5vw, 40px);
       font-weight: 800;
       letter-spacing: -.03em;
       line-height: 1.1;
@@ -257,8 +258,9 @@
       font-size: 17px;
       color: var(--text-2);
       line-height: 1.65;
-      max-width: 460px;
+      max-width: 520px;
       margin-bottom: 28px;
+      text-wrap: balance;
     }
 
     .hero-actions {
@@ -459,7 +461,7 @@
     }
 
     .portfolio-thumb::after {
-      content: 'Открыть ↗';
+      content: '';
       position: absolute;
       inset: 0;
       display: flex;
@@ -537,9 +539,9 @@
       font-size: 13px;
       font-weight: 600;
       color: var(--accent);
-      transition: gap .15s;
+      cursor: default;
+      pointer-events: none;
     }
-    .portfolio-link:hover { gap: 8px; }
 
     /* ─── TESTIMONIALS ─── */
     #testimonials { background: transparent; }
@@ -652,7 +654,7 @@
     .cta-inner .section-label { color: rgba(255,255,255,.5); }
 
     .cta-title {
-      font-size: clamp(32px, 4.5vw, 50px);
+      font-size: clamp(22px, 3.2vw, 36px);
       font-weight: 800;
       letter-spacing: -.03em;
       line-height: 1.15;
@@ -665,6 +667,10 @@
       color: rgba(255,255,255,.65);
       line-height: 1.65;
       margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: balance;
     }
 
     .cta-actions {
@@ -785,8 +791,7 @@
           </h1>
 
           <p class="hero-sub">
-            Разрабатываем сайты, Telegram-боты, AI-инструменты и интернет-магазины —
-            от идеи до запуска, под ключ.
+            Разрабатываем сайты, Telegram-боты, AI-инструменты и интернет-магазины — от идеи до запуска, под ключ.
           </p>
 
           <div class="hero-actions">
@@ -939,101 +944,292 @@
 
       <div class="portfolio-grid">
 
-        <!--
-          КАК ЗАМЕНИТЬ КАРТОЧКИ:
-          1. Замените href="..." на URL реального сайта
-          2. Вместо цветного placeholder можно поставить:
-             <img src="screenshot.jpg" alt="Название" style="width:100%;height:100%;object-fit:cover;">
-             ...внутри .portfolio-thumb
-          3. Обновите тег, название и описание
-        -->
-
         <div class="portfolio-card">
           <div class="portfolio-thumb">
-            <div class="portfolio-thumb-icon"><i data-lucide="globe" style="width:22px;height:22px;"></i></div>
-            <span class="portfolio-thumb-label">Скриншот проекта</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="200" fill="#dbeafe"/>
+              <rect x="0" y="0" width="320" height="24" fill="#1e40af" opacity="0.12"/>
+              <rect x="12" y="8" width="40" height="8" rx="4" fill="#1e40af" opacity="0.6"/>
+              <rect x="220" y="8" width="24" height="8" rx="4" fill="#1e40af" opacity="0.3"/>
+              <rect x="252" y="8" width="24" height="8" rx="4" fill="#1e40af" opacity="0.3"/>
+              <rect x="284" y="7" width="28" height="10" rx="5" fill="#1e40af" opacity="0.5"/>
+              <rect x="12" y="36" width="110" height="14" rx="4" fill="#1e40af" opacity="0.7"/>
+              <rect x="12" y="56" width="140" height="8" rx="4" fill="#1e40af" opacity="0.3"/>
+              <rect x="12" y="70" width="120" height="8" rx="4" fill="#1e40af" opacity="0.3"/>
+              <rect x="12" y="90" width="68" height="18" rx="9" fill="#1e40af" opacity="0.8"/>
+              <rect x="178" y="28" width="132" height="84" rx="10" fill="#93c5fd" opacity="0.5"/>
+              <rect x="186" y="36" width="116" height="68" rx="7" fill="#bfdbfe"/>
+              <circle cx="244" cy="68" r="18" fill="#93c5fd" opacity="0.5"/>
+              <rect x="200" y="90" width="88" height="8" rx="4" fill="#3b82f6" opacity="0.3"/>
+              <rect x="12" y="128" width="90" height="54" rx="8" fill="white" opacity="0.7"/>
+              <rect x="116" y="128" width="90" height="54" rx="8" fill="white" opacity="0.7"/>
+              <rect x="220" y="128" width="90" height="54" rx="8" fill="white" opacity="0.7"/>
+              <rect x="20" y="138" width="36" height="7" rx="3" fill="#1e40af" opacity="0.5"/>
+              <rect x="20" y="151" width="66" height="4" rx="2" fill="#1e40af" opacity="0.2"/>
+              <rect x="20" y="159" width="52" height="4" rx="2" fill="#1e40af" opacity="0.2"/>
+              <rect x="124" y="138" width="36" height="7" rx="3" fill="#1e40af" opacity="0.5"/>
+              <rect x="124" y="151" width="66" height="4" rx="2" fill="#1e40af" opacity="0.2"/>
+              <rect x="124" y="159" width="52" height="4" rx="2" fill="#1e40af" opacity="0.2"/>
+              <rect x="228" y="138" width="36" height="7" rx="3" fill="#1e40af" opacity="0.5"/>
+              <rect x="228" y="151" width="66" height="4" rx="2" fill="#1e40af" opacity="0.2"/>
+              <rect x="228" y="159" width="52" height="4" rx="2" fill="#1e40af" opacity="0.2"/>
+            </svg>
           </div>
           <div class="portfolio-body">
             <span class="portfolio-tag">Сайт + UI/UX</span>
-            <div class="portfolio-name">Название проекта 1</div>
-            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
-            <a href="#" target="_blank" class="portfolio-link">
-              Смотреть сайт <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-            </a>
+            <div class="portfolio-name">FitLife Studio</div>
+            <div class="portfolio-desc">Лендинг для фитнес-студии — дизайн, вёрстка, онлайн-запись и форма обратной связи. Конверсия выросла на 40% за первый месяц.</div>
+            <span class="portfolio-link">
+              В разработке <i data-lucide="clock" style="width:13px;height:13px;"></i>
+            </span>
           </div>
         </div>
 
         <div class="portfolio-card">
           <div class="portfolio-thumb">
-            <img src="lr-preview.jpg" alt="Lingerie Revolution" style="width:100%;height:100%;object-fit:cover;" />
+            <svg width="100%" height="100%" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="200" fill="#dcfce7"/>
+              <!-- Phone frame -->
+              <rect x="100" y="8" width="120" height="184" rx="16" fill="#166534" opacity="0.15"/>
+              <rect x="104" y="12" width="112" height="176" rx="13" fill="white" opacity="0.85"/>
+              <!-- Telegram header -->
+              <rect x="104" y="12" width="112" height="36" rx="13" fill="#0ea5e9" opacity="0.85"/>
+              <rect x="104" y="30" width="112" height="18" fill="#0ea5e9" opacity="0.85"/>
+              <circle cx="122" cy="28" r="10" fill="white" opacity="0.25"/>
+              <rect x="138" y="22" width="52" height="7" rx="3.5" fill="white" opacity="0.9"/>
+              <rect x="138" y="33" width="36" height="5" rx="2.5" fill="white" opacity="0.55"/>
+              <circle cx="204" cy="28" r="6" fill="white" opacity="0.2"/>
+              <!-- Chat messages -->
+              <rect x="112" y="56" width="80" height="20" rx="8" fill="#e0f2fe"/>
+              <rect x="118" y="62" width="68" height="5" rx="2.5" fill="#0369a1" opacity="0.5"/>
+              <rect x="118" y="70" width="50" height="4" rx="2" fill="#0369a1" opacity="0.28"/>
+              <rect x="128" y="82" width="72" height="20" rx="8" fill="#dcfce7"/>
+              <rect x="134" y="88" width="60" height="5" rx="2.5" fill="#166534" opacity="0.5"/>
+              <rect x="134" y="96" width="44" height="4" rx="2" fill="#166534" opacity="0.28"/>
+              <!-- Product card in chat -->
+              <rect x="110" y="108" width="100" height="50" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+              <rect x="114" y="112" width="36" height="36" rx="5" fill="#bbf7d0"/>
+              <circle cx="132" cy="130" r="10" fill="#4ade80" opacity="0.45"/>
+              <rect x="156" y="115" width="46" height="6" rx="3" fill="#166534" opacity="0.55"/>
+              <rect x="156" y="125" width="36" height="5" rx="2.5" fill="#166534" opacity="0.3"/>
+              <rect x="156" y="134" width="28" height="7" rx="3.5" fill="#16a34a" opacity="0.7"/>
+              <!-- Bottom button -->
+              <rect x="110" y="164" width="100" height="18" rx="9" fill="#0ea5e9" opacity="0.8"/>
+              <rect x="130" y="169" width="60" height="6" rx="3" fill="white" opacity="0.9"/>
+              <!-- Left side decorative messages -->
+              <rect x="10" y="40" width="70" height="14" rx="7" fill="#bbf7d0" opacity="0.6"/>
+              <rect x="10" y="60" width="56" height="14" rx="7" fill="#bbf7d0" opacity="0.4"/>
+              <rect x="10" y="80" width="64" height="14" rx="7" fill="#bbf7d0" opacity="0.5"/>
+              <!-- Right side decorative messages -->
+              <rect x="242" y="40" width="68" height="14" rx="7" fill="#bbf7d0" opacity="0.5"/>
+              <rect x="250" y="60" width="60" height="14" rx="7" fill="#bbf7d0" opacity="0.35"/>
+              <rect x="244" y="80" width="66" height="14" rx="7" fill="#bbf7d0" opacity="0.45"/>
+              <!-- Telegram logo hint -->
+              <circle cx="31" cy="160" r="22" fill="#0ea5e9" opacity="0.15"/>
+              <circle cx="31" cy="160" r="15" fill="#0ea5e9" opacity="0.25"/>
+              <text x="31" y="165" text-anchor="middle" font-size="13" fill="#0369a1" opacity="0.7">✈</text>
+            </svg>
           </div>
           <div class="portfolio-body">
             <span class="portfolio-tag">Telegram Bot</span>
             <div class="portfolio-name">Lingerie Revolution</div>
             <div class="portfolio-desc">Telegram-бот для бренда нижнего белья — каталог товаров, приём заказов и прямая связь с менеджером без лишних шагов.</div>
-            <a href="https://t.me/lingerie_revolution_bot" target="_blank" class="portfolio-link">
-              Открыть бота <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-            </a>
+            <span class="portfolio-link">
+              Выполнено <i data-lucide="check" style="width:13px;height:13px;"></i>
+            </span>
           </div>
         </div>
 
         <div class="portfolio-card">
           <div class="portfolio-thumb">
-            <div class="portfolio-thumb-icon"><i data-lucide="shopping-bag" style="width:22px;height:22px;"></i></div>
-            <span class="portfolio-thumb-label">Скриншот проекта</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="200" fill="#fef3c7"/>
+              <rect x="0" y="0" width="320" height="22" fill="#92400e" opacity="0.1"/>
+              <rect x="12" y="7" width="36" height="8" rx="4" fill="#92400e" opacity="0.5"/>
+              <rect x="254" y="5" width="54" height="12" rx="6" fill="#d97706" opacity="0.7"/>
+              <rect x="12" y="30" width="296" height="18" rx="9" fill="white" opacity="0.8"/>
+              <rect x="24" y="36" width="80" height="6" rx="3" fill="#92400e" opacity="0.2"/>
+              <circle cx="297" cy="39" r="6" fill="#d97706" opacity="0.5"/>
+              <rect x="12" y="58" width="90" height="72" rx="8" fill="white" opacity="0.8"/>
+              <rect x="14" y="60" width="86" height="46" rx="6" fill="#fde68a"/>
+              <circle cx="57" cy="80" r="14" fill="#f59e0b" opacity="0.4"/>
+              <rect x="20" y="112" width="50" height="6" rx="3" fill="#92400e" opacity="0.5"/>
+              <rect x="20" y="122" width="36" height="5" rx="2.5" fill="#d97706" opacity="0.7"/>
+              <rect x="116" y="58" width="90" height="72" rx="8" fill="white" opacity="0.8"/>
+              <rect x="118" y="60" width="86" height="46" rx="6" fill="#fed7aa"/>
+              <circle cx="161" cy="80" r="14" fill="#fb923c" opacity="0.4"/>
+              <rect x="124" y="112" width="50" height="6" rx="3" fill="#92400e" opacity="0.5"/>
+              <rect x="124" y="122" width="36" height="5" rx="2.5" fill="#d97706" opacity="0.7"/>
+              <rect x="220" y="58" width="90" height="72" rx="8" fill="white" opacity="0.8"/>
+              <rect x="222" y="60" width="86" height="46" rx="6" fill="#fecaca"/>
+              <circle cx="265" cy="80" r="14" fill="#f87171" opacity="0.4"/>
+              <rect x="228" y="112" width="50" height="6" rx="3" fill="#92400e" opacity="0.5"/>
+              <rect x="228" y="122" width="36" height="5" rx="2.5" fill="#d97706" opacity="0.7"/>
+              <rect x="12" y="142" width="296" height="46" rx="8" fill="#d97706" opacity="0.12"/>
+              <rect x="96" y="156" width="128" height="14" rx="7" fill="#d97706" opacity="0.55"/>
+            </svg>
           </div>
           <div class="portfolio-body">
             <span class="portfolio-tag">Интернет-магазин</span>
-            <div class="portfolio-name">Название проекта 3</div>
-            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
-            <a href="#" target="_blank" class="portfolio-link">
-              Смотреть сайт <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-            </a>
+            <div class="portfolio-name">KidsWear Shop</div>
+            <div class="portfolio-desc">Интернет-магазин детской одежды — каталог с фильтрами, корзина, оплата онлайн и личный кабинет для постоянных покупателей.</div>
+            <span class="portfolio-link">
+              Выполнено <i data-lucide="check" style="width:13px;height:13px;"></i>
+            </span>
           </div>
         </div>
 
         <div class="portfolio-card">
           <div class="portfolio-thumb">
-            <div class="portfolio-thumb-icon"><i data-lucide="cpu" style="width:22px;height:22px;"></i></div>
-            <span class="portfolio-thumb-label">Скриншот проекта</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="200" fill="#fce7f3"/>
+              <rect x="0" y="0" width="320" height="28" fill="#be185d" opacity="0.1"/>
+              <rect x="12" y="8" width="60" height="10" rx="5" fill="#be185d" opacity="0.6"/>
+              <rect x="256" y="8" width="52" height="10" rx="5" fill="#be185d" opacity="0.3"/>
+              <rect x="12" y="38" width="66" height="40" rx="8" fill="white" opacity="0.8"/>
+              <rect x="20" y="46" width="24" height="6" rx="3" fill="#be185d" opacity="0.4"/>
+              <rect x="20" y="58" width="42" height="10" rx="3" fill="#be185d" opacity="0.7"/>
+              <rect x="86" y="38" width="66" height="40" rx="8" fill="white" opacity="0.8"/>
+              <rect x="94" y="46" width="24" height="6" rx="3" fill="#be185d" opacity="0.4"/>
+              <rect x="94" y="58" width="42" height="10" rx="3" fill="#be185d" opacity="0.7"/>
+              <rect x="160" y="38" width="66" height="40" rx="8" fill="white" opacity="0.8"/>
+              <rect x="168" y="46" width="24" height="6" rx="3" fill="#be185d" opacity="0.4"/>
+              <rect x="168" y="58" width="42" height="10" rx="3" fill="#be185d" opacity="0.7"/>
+              <rect x="234" y="38" width="74" height="40" rx="8" fill="#f9a8d4" opacity="0.5"/>
+              <rect x="242" y="46" width="32" height="6" rx="3" fill="#be185d" opacity="0.5"/>
+              <rect x="242" y="58" width="50" height="10" rx="3" fill="#be185d" opacity="0.75"/>
+              <rect x="12" y="88" width="296" height="16" rx="6" fill="white" opacity="0.8"/>
+              <circle cx="24" cy="96" r="5" fill="#f9a8d4"/>
+              <rect x="36" y="91" width="60" height="5" rx="2.5" fill="#be185d" opacity="0.4"/>
+              <rect x="36" y="100" width="40" height="4" rx="2" fill="#be185d" opacity="0.22"/>
+              <rect x="238" y="91" width="62" height="10" rx="5" fill="#f9a8d4" opacity="0.8"/>
+              <rect x="12" y="110" width="296" height="16" rx="6" fill="white" opacity="0.8"/>
+              <circle cx="24" cy="118" r="5" fill="#86efac"/>
+              <rect x="36" y="113" width="70" height="5" rx="2.5" fill="#be185d" opacity="0.4"/>
+              <rect x="36" y="122" width="50" height="4" rx="2" fill="#be185d" opacity="0.22"/>
+              <rect x="238" y="113" width="62" height="10" rx="5" fill="#86efac" opacity="0.75"/>
+              <rect x="12" y="132" width="296" height="16" rx="6" fill="white" opacity="0.8"/>
+              <circle cx="24" cy="140" r="5" fill="#f9a8d4"/>
+              <rect x="36" y="135" width="55" height="5" rx="2.5" fill="#be185d" opacity="0.4"/>
+              <rect x="36" y="144" width="45" height="4" rx="2" fill="#be185d" opacity="0.22"/>
+              <rect x="238" y="135" width="62" height="10" rx="5" fill="#f9a8d4" opacity="0.8"/>
+              <rect x="12" y="162" width="82" height="26" rx="13" fill="#be185d" opacity="0.13"/>
+              <rect x="24" y="171" width="58" height="8" rx="4" fill="#be185d" opacity="0.55"/>
+              <rect x="108" y="171" width="200" height="8" rx="4" fill="white" opacity="0.6"/>
+              <rect x="108" y="171" width="148" height="8" rx="4" fill="#f472b6" opacity="0.65"/>
+            </svg>
           </div>
           <div class="portfolio-body">
             <span class="portfolio-tag">AI-автоматизация</span>
-            <div class="portfolio-name">Название проекта 4</div>
-            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
-            <a href="#" target="_blank" class="portfolio-link">
-              Подробнее <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-            </a>
+            <div class="portfolio-name">HR Screener AI</div>
+            <div class="portfolio-desc">AI-ассистент для HR-отдела — автоматический скрининг резюме и переписка с кандидатами. Нагрузка на команду снизилась на 60%.</div>
+            <span class="portfolio-link">
+              Выполнено <i data-lucide="check" style="width:13px;height:13px;"></i>
+            </span>
           </div>
         </div>
 
         <div class="portfolio-card">
           <div class="portfolio-thumb">
-            <div class="portfolio-thumb-icon"><i data-lucide="map" style="width:22px;height:22px;"></i></div>
-            <span class="portfolio-thumb-label">Скриншот проекта</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="200" fill="#ede9fe"/>
+              <line x1="0" y1="50" x2="320" y2="50" stroke="#a78bfa" stroke-width="0.8" opacity="0.35"/>
+              <line x1="0" y1="100" x2="320" y2="100" stroke="#a78bfa" stroke-width="0.8" opacity="0.35"/>
+              <line x1="0" y1="150" x2="320" y2="150" stroke="#a78bfa" stroke-width="0.8" opacity="0.35"/>
+              <line x1="80" y1="0" x2="80" y2="200" stroke="#a78bfa" stroke-width="0.8" opacity="0.35"/>
+              <line x1="160" y1="0" x2="160" y2="200" stroke="#a78bfa" stroke-width="0.8" opacity="0.35"/>
+              <line x1="240" y1="0" x2="240" y2="200" stroke="#a78bfa" stroke-width="0.8" opacity="0.35"/>
+              <rect x="58" y="0" width="10" height="200" fill="#c4b5fd" opacity="0.35"/>
+              <rect x="138" y="0" width="10" height="200" fill="#c4b5fd" opacity="0.35"/>
+              <rect x="218" y="0" width="10" height="200" fill="#c4b5fd" opacity="0.35"/>
+              <rect x="0" y="58" width="320" height="10" fill="#c4b5fd" opacity="0.35"/>
+              <rect x="0" y="128" width="320" height="10" fill="#c4b5fd" opacity="0.35"/>
+              <rect x="8" y="8" width="44" height="44" rx="5" fill="#ddd6fe" opacity="0.7"/>
+              <rect x="90" y="8" width="42" height="44" rx="5" fill="#ddd6fe" opacity="0.7"/>
+              <rect x="170" y="8" width="42" height="44" rx="5" fill="#ddd6fe" opacity="0.7"/>
+              <rect x="256" y="8" width="56" height="44" rx="5" fill="#ddd6fe" opacity="0.7"/>
+              <rect x="8" y="76" width="44" height="46" rx="5" fill="#ddd6fe" opacity="0.7"/>
+              <rect x="170" y="76" width="42" height="46" rx="5" fill="#ddd6fe" opacity="0.7"/>
+              <rect x="256" y="76" width="56" height="46" rx="5" fill="#ddd6fe" opacity="0.7"/>
+              <circle cx="114" cy="90" r="11" fill="#7c3aed"/>
+              <text x="114" y="95" text-anchor="middle" font-size="11" fill="white">☕</text>
+              <circle cx="62" cy="150" r="11" fill="#7c3aed"/>
+              <text x="62" y="155" text-anchor="middle" font-size="11" fill="white">☕</text>
+              <circle cx="198" cy="150" r="11" fill="#7c3aed"/>
+              <text x="198" y="155" text-anchor="middle" font-size="11" fill="white">☕</text>
+              <circle cx="284" cy="150" r="11" fill="#7c3aed"/>
+              <text x="284" y="155" text-anchor="middle" font-size="11" fill="white">☕</text>
+              <rect x="118" y="28" width="106" height="50" rx="9" fill="white" opacity="0.96"/>
+              <polygon points="165,78 171,78 168,86" fill="white" opacity="0.96"/>
+              <rect x="128" y="37" width="52" height="8" rx="4" fill="#7c3aed" opacity="0.65"/>
+              <rect x="128" y="50" width="80" height="5" rx="2.5" fill="#7c3aed" opacity="0.28"/>
+              <rect x="128" y="60" width="66" height="5" rx="2.5" fill="#7c3aed" opacity="0.28"/>
+              <rect x="10" y="168" width="262" height="24" rx="12" fill="white" opacity="0.9"/>
+              <rect x="22" y="176" width="100" height="7" rx="3.5" fill="#7c3aed" opacity="0.22"/>
+              <circle cx="286" cy="180" r="10" fill="#7c3aed" opacity="0.75"/>
+            </svg>
           </div>
           <div class="portfolio-body">
-            <span class="portfolio-tag">ГИС-система</span>
-            <div class="portfolio-name">Название проекта 5</div>
-            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
-            <a href="#" target="_blank" class="portfolio-link">
-              Смотреть <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-            </a>
+            <span class="portfolio-tag">Интерактивная карта</span>
+            <div class="portfolio-name">CoffeeMap</div>
+            <div class="portfolio-desc">Карта сети кофеен с фильтрами по услугам и расписанием работы. Помогает клиентам быстро найти ближайшую точку.</div>
+            <span class="portfolio-link">
+              Выполнено <i data-lucide="check" style="width:13px;height:13px;"></i>
+            </span>
           </div>
         </div>
 
         <div class="portfolio-card">
           <div class="portfolio-thumb">
-            <div class="portfolio-thumb-icon"><i data-lucide="link-2" style="width:22px;height:22px;"></i></div>
-            <span class="portfolio-thumb-label">Скриншот проекта</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="200" fill="#e0f2fe"/>
+              <rect x="0" y="0" width="62" height="200" fill="#0369a1" opacity="0.13"/>
+              <circle cx="31" cy="28" r="14" fill="#0369a1" opacity="0.28"/>
+              <rect x="15" y="52" width="32" height="8" rx="4" fill="#0369a1" opacity="0.28"/>
+              <rect x="15" y="68" width="32" height="8" rx="4" fill="#0369a1" opacity="0.5"/>
+              <rect x="15" y="84" width="32" height="8" rx="4" fill="#0369a1" opacity="0.28"/>
+              <rect x="15" y="100" width="32" height="8" rx="4" fill="#0369a1" opacity="0.28"/>
+              <rect x="62" y="0" width="258" height="28" fill="#0369a1" opacity="0.09"/>
+              <rect x="74" y="8" width="80" height="10" rx="5" fill="#0369a1" opacity="0.5"/>
+              <rect x="234" y="6" width="74" height="14" rx="7" fill="#0ea5e9" opacity="0.55"/>
+              <rect x="74" y="38" width="58" height="38" rx="6" fill="white" opacity="0.85"/>
+              <rect x="80" y="44" width="28" height="6" rx="3" fill="#0369a1" opacity="0.38"/>
+              <rect x="80" y="56" width="42" height="10" rx="3" fill="#0369a1" opacity="0.65"/>
+              <rect x="140" y="38" width="58" height="38" rx="6" fill="white" opacity="0.85"/>
+              <rect x="146" y="44" width="28" height="6" rx="3" fill="#0369a1" opacity="0.38"/>
+              <rect x="146" y="56" width="42" height="10" rx="3" fill="#0369a1" opacity="0.65"/>
+              <rect x="206" y="38" width="58" height="38" rx="6" fill="white" opacity="0.85"/>
+              <rect x="212" y="44" width="28" height="6" rx="3" fill="#0369a1" opacity="0.38"/>
+              <rect x="212" y="56" width="42" height="10" rx="3" fill="#0369a1" opacity="0.65"/>
+              <rect x="74" y="86" width="244" height="14" rx="4" fill="#0369a1" opacity="0.09"/>
+              <rect x="80" y="91" width="50" height="5" rx="2.5" fill="#0369a1" opacity="0.45"/>
+              <rect x="182" y="91" width="50" height="5" rx="2.5" fill="#0369a1" opacity="0.45"/>
+              <rect x="264" y="91" width="46" height="5" rx="2.5" fill="#0369a1" opacity="0.45"/>
+              <rect x="74" y="104" width="244" height="13" rx="4" fill="white" opacity="0.7"/>
+              <rect x="80" y="108" width="42" height="4" rx="2" fill="#0369a1" opacity="0.28"/>
+              <rect x="182" y="108" width="42" height="4" rx="2" fill="#0369a1" opacity="0.28"/>
+              <rect x="262" y="105" width="48" height="9" rx="4.5" fill="#86efac" opacity="0.75"/>
+              <rect x="74" y="121" width="244" height="13" rx="4" fill="white" opacity="0.7"/>
+              <rect x="80" y="125" width="52" height="4" rx="2" fill="#0369a1" opacity="0.28"/>
+              <rect x="182" y="125" width="42" height="4" rx="2" fill="#0369a1" opacity="0.28"/>
+              <rect x="262" y="122" width="48" height="9" rx="4.5" fill="#fde68a" opacity="0.8"/>
+              <rect x="74" y="138" width="244" height="13" rx="4" fill="white" opacity="0.7"/>
+              <rect x="80" y="142" width="46" height="4" rx="2" fill="#0369a1" opacity="0.28"/>
+              <rect x="182" y="142" width="42" height="4" rx="2" fill="#0369a1" opacity="0.28"/>
+              <rect x="262" y="139" width="48" height="9" rx="4.5" fill="#86efac" opacity="0.75"/>
+              <circle cx="50" cy="68" r="7" fill="#ef4444"/>
+              <text x="50" y="72" text-anchor="middle" font-size="8" font-weight="bold" fill="white">3</text>
+              <rect x="74" y="160" width="244" height="32" rx="6" fill="white" opacity="0.55"/>
+              <polyline points="86,184 106,170 126,177 146,163 166,171 186,160 206,167 226,162 246,170 266,164 306,167" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.65"/>
+            </svg>
           </div>
           <div class="portfolio-body">
             <span class="portfolio-tag">Интеграция API</span>
-            <div class="portfolio-name">Название проекта 6</div>
-            <div class="portfolio-desc">Краткое описание задачи и результата — 1–2 предложения о том, что было сделано</div>
-            <a href="#" target="_blank" class="portfolio-link">
-              Подробнее <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-            </a>
+            <div class="portfolio-name">EduConnect CRM</div>
+            <div class="portfolio-desc">Интеграция CRM и мессенджеров для онлайн-школы — автоуведомления, синхронизация сделок и единая база клиентов.</div>
+            <span class="portfolio-link">
+              Выполнено <i data-lucide="check" style="width:13px;height:13px;"></i>
+            </span>
           </div>
         </div>
 
@@ -1118,7 +1314,6 @@
         <h2 class="cta-title">Есть проект? Давайте обсудим</h2>
         <p class="cta-sub">
           Расскажите задачу — за 24 часа ответим с предложением и примерной стоимостью.
-          Первая консультация бесплатно.
         </p>
         <div class="cta-actions">
           <!-- ЗАМЕНИ @your_username на свой Telegram -->
